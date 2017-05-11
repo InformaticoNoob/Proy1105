@@ -16,25 +16,15 @@ echo $sql;
 
 }
 
+$sqlip = "select host from information_schema.processlist WHERE ID = connection_id();";
+$resultado = $miconn->query($sqlip);
 
-/*
-private function Conexion(){
-        
-    $miconn = new mysqli("localhost", "root", "avaras08", "ventas");
-    if ($miconn->connect_errno) {
-        return "Fallo al conectar a MySQL: (" . $miconn->connect_errno . ") " . $miconn->connect_error;
-        }
-        return $miconn;
-        
-        
-        
-        
-        
-        
+//Consultas de seleccion que devuelven un conjunto de resultados
+    if($resultado = $miconn->query($sql))
+    {
+        //liberar el conjunto de resultados
+        $miconn->close();
     }
- */
-  
 
 
- 
- 
+?>
